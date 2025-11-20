@@ -1,0 +1,81 @@
+/* Noto Sans 폰트의 400, 500, 700 굵기를 임포트 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap");
+
+:root {
+  /* ### Neutral */
+
+  --clr-neutral-900: hsl(227, 75%, 14%); /* Neutral 900 */
+  --clr-neutral-800: hsl(226, 25%, 17%); /* Neutral 800 */
+  --clr-neutral-700: hsl(225, 23%, 24%); /* Neutral 700 */
+  --clr-neutral-600: hsl(226, 11%, 37%); /* Neutral 600 */
+  --clr-neutral-300: hsl(0, 0%, 78%); /* Neutral 300 */
+  --clr-neutral-200: hsl(217, 61%, 90%); /* Neutral 200 */
+  --clr-neutral-100: hsl(0, 0%, 93%); /* Neutral 100 */
+  --clr-neutral-0: hsl(200, 60%, 99%); /* Neutral 0 */
+
+  /* Red */
+  --clr-red-400: hsl(3, 86%, 64%);
+  --clr-red-500: hsl(3, 71%, 56%);
+  --clr-red-700: hsl(3, 77%, 44%);
+
+  /* Gradient */
+  --gradient-light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --gradient-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+  /* ## Typography */
+
+  /* Font Family */
+  --ff-main: "Noto Sans", sans-serif;
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Font Sizes */
+  --fs-body: 1rem; /* 16px */
+}
+
+body {
+  margin: 0;
+}
+
+.main-bg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: var(--gradient-dark);
+  min-height: 100vh;
+}
+
+.main-container {
+  max-width: 1440px;
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-btn {
+  width: 40px;
+  height: 40px;
+  background-color: var(--clr-neutral-600);
+  border: hidden;
+  border-radius: 12px;
+}
+
+.toggle-btn :hover {
+  cursor: pointer;
+}
+
+.logo-toggle {
+  width: 1260px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--clr-neutral-700);
+  padding: 15px;
+  border-radius: 24px;
+}
+
+.content-main-text {
+  --fw-medium: 500;
+}
