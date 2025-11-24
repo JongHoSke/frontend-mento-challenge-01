@@ -1,9 +1,9 @@
-import Main from "./components/main.jsx";
+import MainComponent from "@components/MainComponent";
 
 const App = () => {
   return (
     <>
-      <Main />
+      <MainComponent />
     </>
   );
 };
