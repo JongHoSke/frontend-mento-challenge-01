@@ -10,7 +10,7 @@ const MainComponent = () => {
     console.log("Selected Category:", category);
     setActiveBtn(category);
   };
-
+  // if(activeBtn === "all") if(activeBtn === "active") if(activeBtn === "inactive")
   return (
     <>
       <main className="main-bg">
@@ -52,8 +52,13 @@ const MainComponent = () => {
               </div>
             </div>
             <div className="main-cards-container">
-              {cardDatas.map((info, idx) => {
-                return <CardComponent key={idx} info={info} />;
+              {(activeBtn === "all"
+                ? cardDatas
+                : activeBtn === "active"
+                ? cardDatas.filter((cardData) => cardData.isActive)
+                : cardDatas.filter((cardData) => !cardData.isActive)
+              ).map((info) => {
+                return <CardComponent key={info.id} info={info} />;
               })}
             </div>
           </div>

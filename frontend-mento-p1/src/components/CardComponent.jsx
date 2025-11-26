@@ -1,7 +1,7 @@
 import "@css/card.css";
 import { useState } from "react";
 const CardComponent = ({ info }) => {
-  const [isToggleOn, setIsToggleOn] = useState(false);
+  const [isToggle, setIsToggle] = useState(info.isActive);
 
   return (
     <div className="card-container">
@@ -18,8 +18,8 @@ const CardComponent = ({ info }) => {
           <label className="toggle-wrapper">
             <input
               type="checkbox"
-              checked={isToggleOn}
-              onChange={() => setIsToggleOn(!isToggleOn)}
+              checked={isToggle}
+              onChange={() => setIsToggle(!isToggle)}
               className="toggle-input"
             />
             <span className="toggle-slider"></span>
