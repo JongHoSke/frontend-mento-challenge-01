@@ -5,12 +5,22 @@ import { useState } from "react";
 import cardDatas from "@/data.json";
 const MainComponent = () => {
   const [activeBtn, setActiveBtn] = useState("all");
-  console.log("카드 데이터", cardDatas);
+  const [cards, setCards] = useState(cardDatas);
+  console.log("cards", cards);
   const handleFilterClick = (category) => {
     console.log("Selected Category:", category);
     setActiveBtn(category);
   };
-  // if(activeBtn === "all") if(activeBtn === "active") if(activeBtn === "inactive")
+
+  const handleCardActive = (id) => {
+    const findCard = cards.find((card) => card.id === id);
+    findCard.isActive = !findCard.isActive;
+    const filterCrads = cards.filter((card) => card.id != findCard.id);
+    filterCrads.push(findCard);
+    filterCrads.sort((a, b) => a.id - b.id);
+    setCards(filterCrads);
+  };
+
   return (
     <>
       <main className="main-bg">
@@ -53,12 +63,18 @@ const MainComponent = () => {
             </div>
             <div className="main-cards-container">
               {(activeBtn === "all"
-                ? cardDatas
+                ? cards
                 : activeBtn === "active"
-                ? cardDatas.filter((cardData) => cardData.isActive)
-                : cardDatas.filter((cardData) => !cardData.isActive)
+                ? cards.filter((cardData) => cardData.isActive)
+                : cards.filter((cardData) => !cardData.isActive)
               ).map((info) => {
-                return <CardComponent key={info.id} info={info} />;
+                return (
+                  <CardComponent
+                    key={info.id}
+                    info={info}
+                    handleCardActive={handleCardActive}
+                  />
+                );
               })}
             </div>
           </div>
