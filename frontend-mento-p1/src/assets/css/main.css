@@ -58,12 +58,10 @@ body {
 }
 
 .main-cards-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  flex-grow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 0.5rem;
 }
 
 .filter-btns {
