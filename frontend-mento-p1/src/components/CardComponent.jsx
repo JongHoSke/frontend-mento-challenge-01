@@ -1,6 +1,6 @@
 import "@css/card.css";
 import { useState } from "react";
-const CardComponent = ({ info, handleCardActive }) => {
+const CardComponent = ({ info, handleCardActive, handelCardRemove }) => {
   const [isToggle, setIsToggle] = useState(info.isActive);
   const handleOnChange = () => {
     setIsToggle(!isToggle);
@@ -16,7 +16,9 @@ const CardComponent = ({ info, handleCardActive }) => {
         </div>
       </div>
       <div className="card-btns">
-        <button className="remove">Remove</button>
+        <button className="remove" onClick={() => handelCardRemove(info.id)}>
+          Remove
+        </button>
         <div className="toggle-container">
           <label className="toggle-wrapper">
             <input

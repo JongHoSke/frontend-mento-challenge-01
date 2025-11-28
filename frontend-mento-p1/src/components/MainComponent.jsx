@@ -21,6 +21,11 @@ const MainComponent = () => {
     setCards(filterCrads);
   };
 
+  const handelCardRemove = (id) => {
+    const findCard = cards.find((card) => card.id === id);
+    const filterCards = cards.filter((card) => card.id != findCard.id);
+    setCards(filterCards);
+  };
   return (
     <>
       <main className="main-bg">
@@ -73,6 +78,7 @@ const MainComponent = () => {
                     key={info.id}
                     info={info}
                     handleCardActive={handleCardActive}
+                    handelCardRemove={handelCardRemove}
                   />
                 );
               })}
