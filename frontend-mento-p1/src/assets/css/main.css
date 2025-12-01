@@ -19,8 +19,7 @@
   --clr-red-700: hsl(3, 77%, 44%);
 
   /* Gradient */
-  --gradient-light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
-  --gradient-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --gradient-bg: linear-gradient(180deg, #040918 0%, #091540 100%);
 
   /* ## Typography */
 
@@ -46,7 +45,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  background: var(--gradient-dark);
+  background: var(--gradient-bg);
   min-height: 100vh;
 }
 
@@ -73,7 +72,7 @@ body {
 
 .filter-button {
   color: var(--clr-neutral-200);
-  background-color: var(--clr-neutral-600);
+  background-color: var(--clr-neutral-700);
   min-width: 4rem;
   font-size: 1rem;
   cursor: pointer;
@@ -91,7 +90,7 @@ body {
   border-radius: 12px;
 }
 
-.toggle-btn :hover {
+.toggle-btn:hover {
   cursor: pointer;
 }
 
@@ -111,10 +110,21 @@ body {
   color: var(--clr-neutral-200);
 }
 
-.filter-button {
-}
-
 .filter-button.active {
   background-color: var(--clr-red-400);
   color: var(--clr-neutral-900);
+}
+
+/* 라이트 모드 */
+body[data-theme="light"] {
+  --gradient-bg: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+
+  /* 네츄럴 컬러 */
+  --clr-neutral-900: hsl(200, 60%, 99%);
+  --clr-neutral-800: hsl(200, 60%, 99%);
+  --clr-neutral-700: hsl(200, 60%, 99%);
+  --clr-neutral-200: hsl(227, 75%, 14%);
+
+  /* 레드 컬러 */
+  --clr-red-400: hsl(3, 77%, 44%);
 }

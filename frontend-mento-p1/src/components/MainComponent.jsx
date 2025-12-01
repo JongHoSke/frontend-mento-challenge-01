@@ -33,8 +33,15 @@ const MainComponent = () => {
           <div>
             <div className="logo-toggle">
               <img src={logoImg} alt="로고 이미지" />{" "}
-              <button className="btn-toggle">
-                <img src={toggleImg} alt="토글버튼" />
+              <button
+                className="btn-toggle"
+                onClick={() => {
+                  const current = document.body.dataset.theme;
+                  document.body.dataset.theme =
+                    current === "light" ? "dark" : "light";
+                }}
+              >
+                <img src={toggleImg} alt="테마 토글버튼" />
               </button>
             </div>
             <div className="filter-btns">
