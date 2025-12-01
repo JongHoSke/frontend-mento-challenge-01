@@ -123,6 +123,7 @@ body[data-theme="light"] {
   --clr-neutral-900: hsl(200, 60%, 99%);
   --clr-neutral-800: hsl(200, 60%, 99%);
   --clr-neutral-700: hsl(200, 60%, 99%);
+  --clr-neutral-600: hsl(0, 0%, 78%);
   --clr-neutral-200: hsl(227, 75%, 14%);
 
   /* 레드 컬러 */

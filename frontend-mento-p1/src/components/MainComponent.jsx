@@ -1,12 +1,22 @@
-import logoImg from "@images/logo-dark.svg";
-import toggleImg from "@images/icon-sun.svg";
+import darkLogo from "@images/logo-dark.svg";
+import darkToggleIcon from "@images/icon-sun.svg";
+import lightLogo from "@images/logo-light.svg";
+import lightToggleIcon from "@images/icon-moon.svg";
 import CardComponent from "@components/CardComponent";
 import { useState } from "react";
 import cardDatas from "@/data.json";
 const MainComponent = () => {
   const [activeBtn, setActiveBtn] = useState("all");
   const [cards, setCards] = useState(cardDatas);
-  console.log("cards", cards);
+  const [theme, setTheme] = useState(document.body.dataset.theme || "dark"); // 테마가 없으면 dark 있으면 light
+  const isLightTheme = theme === "light";
+
+  const toggleTheme = () => {
+    const next = isLightTheme ? "dark" : "light";
+    document.body.dataset.theme = next;
+    setTheme(next);
+  };
+
   const handleFilterClick = (category) => {
     console.log("Selected Category:", category);
     setActiveBtn(category);
@@ -32,16 +42,15 @@ const MainComponent = () => {
         <div className="main-container">
           <div>
             <div className="logo-toggle">
-              <img src={logoImg} alt="로고 이미지" />{" "}
-              <button
-                className="btn-toggle"
-                onClick={() => {
-                  const current = document.body.dataset.theme;
-                  document.body.dataset.theme =
-                    current === "light" ? "dark" : "light";
-                }}
-              >
-                <img src={toggleImg} alt="테마 토글버튼" />
+              <img
+                src={isLightTheme ? lightLogo : darkLogo}
+                alt="로고 이미지"
+              />{" "}
+              <button className="btn-toggle" onClick={toggleTheme}>
+                <img
+                  src={isLightTheme ? lightToggleIcon : darkToggleIcon}
+                  alt="테마 토글버튼"
+                />
               </button>
             </div>
             <div className="filter-btns">
