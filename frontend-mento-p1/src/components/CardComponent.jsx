@@ -7,7 +7,7 @@ const CardComponent = ({ info, handleCardActive, handelCardRemove }) => {
     handleCardActive(info.id);
   };
   return (
-    <div className="card-container">
+    <article className="card-container">
       <div className="card-content">
         <img src={info.logo} alt={info.name} />
         <div>
@@ -31,7 +31,7 @@ const CardComponent = ({ info, handleCardActive, handelCardRemove }) => {
           </label>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
