@@ -11,6 +11,13 @@ const MainComponent = () => {
   const [theme, setTheme] = useState(document.body.dataset.theme || "dark"); // 테마가 없으면 dark 있으면 light
   const isLightTheme = theme === "light";
 
+  const filteredCards =
+    activeBtn === "all"
+      ? cards
+      : activeBtn === "active"
+        ? cards.filter((card) => card.isActive)
+        : cards.filter((card) => !card.isActive);
+
   const toggleTheme = () => {
     const next = isLightTheme ? "dark" : "light";
     document.body.dataset.theme = next;
@@ -25,10 +32,10 @@ const MainComponent = () => {
   const handleCardActive = (id) => {
     const findCard = cards.find((card) => card.id === id);
     findCard.isActive = !findCard.isActive;
-    const filterCrads = cards.filter((card) => card.id != findCard.id);
-    filterCrads.push(findCard);
-    filterCrads.sort((a, b) => a.id - b.id);
-    setCards(filterCrads);
+    const filterCards = cards.filter((card) => card.id != findCard.id);
+    filterCards.push(findCard);
+    filterCards.sort((a, b) => a.id - b.id);
+    setCards(filterCards);
   };
 
   const handelCardRemove = (id) => {
@@ -40,7 +47,7 @@ const MainComponent = () => {
     <>
       <main className="main-bg">
         <div className="main-container">
-          <div>
+          <div className="header-area">
             <div className="logo-toggle">
               <img
                 src={isLightTheme ? lightLogo : darkLogo}
@@ -82,23 +89,25 @@ const MainComponent = () => {
                 </button>
               </div>
             </div>
-            <div className="main-cards-container">
-              {(activeBtn === "all"
-                ? cards
-                : activeBtn === "active"
-                ? cards.filter((cardData) => cardData.isActive)
-                : cards.filter((cardData) => !cardData.isActive)
-              ).map((info) => {
-                return (
-                  <CardComponent
-                    key={info.id}
-                    info={info}
-                    handleCardActive={handleCardActive}
-                    handelCardRemove={handelCardRemove}
-                  />
-                );
-              })}
-            </div>
+          </div>
+
+          <div className="main-cards-container">
+            {filteredCards.length === 0 ? (
+              <div className="empty-state">
+                <p>
+                  {activeBtn === "all" ? "" : activeBtn === "active" ? "" : ""}
+                </p>
+              </div>
+            ) : (
+              filteredCards.map((info) => (
+                <CardComponent
+                  key={info.id}
+                  info={info}
+                  handleCardActive={handleCardActive}
+                  handelCardRemove={handelCardRemove}
+                />
+              ))
+            )}
           </div>
         </div>
       </main>

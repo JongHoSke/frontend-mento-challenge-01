@@ -1,13 +1,13 @@
 .card-container {
+  display: flex;
+  flex-direction: column;
   color: var(--clr-neutral-200);
+
+  height: 197px;
   padding: 0.92rem;
   border: solid 1px var(--clr-neutral-600);
   background-color: var(--clr-neutral-800);
   border-radius: 18px;
-}
-
-.card-content {
-  margin-bottom: 3rem;
 }
 
 .card-content img {
@@ -28,6 +28,7 @@
 .card-btns {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .card-btns .remove {
@@ -93,4 +94,11 @@
 /* ON 상태에서 핸들 이동 */
 .toggle-input:checked + .toggle-slider::before {
   transform: translateX(24px);
+}
+
+@media (max-width: 767px) {
+  .card-container {
+    width: 100%;
+    height: 197px;
+  }
 }

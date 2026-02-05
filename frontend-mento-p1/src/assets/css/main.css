@@ -41,6 +41,12 @@ body {
   font-size: var(--fs-body);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .main-bg {
   display: flex;
   justify-content: center;
@@ -50,10 +56,16 @@ body {
 }
 
 .main-container {
+  width: 100%;
   max-width: 1440px;
   padding: 60px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header-area {
+  width: 100%;
 }
 
 .main-cards-container {
@@ -61,6 +73,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 0.5rem;
+
+  min-height: 600px;
 }
 
 .filter-btns {
@@ -85,6 +99,7 @@ body {
 .btn-toggle {
   width: 40px;
   height: 40px;
+  box-sizing: border-box;
   background-color: var(--clr-neutral-600);
   border: hidden;
   border-radius: 12px;
@@ -95,8 +110,9 @@ body {
 }
 
 .logo-toggle {
-  width: 97.7%;
+  width: 100%;
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   background-color: var(--clr-neutral-700);
   padding: 15px;
@@ -115,6 +131,18 @@ body {
   color: var(--clr-neutral-900);
 }
 
+.main-cards-container {
+  min-height: 320px;
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-neutral-400);
+}
+
 /* 라이트 모드 */
 body[data-theme="light"] {
   --gradient-bg: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
@@ -128,4 +156,37 @@ body[data-theme="light"] {
 
   /* 레드 컬러 */
   --clr-red-400: hsl(3, 77%, 44%);
+}
+
+/* 반응형 스타일링 mobile */
+@media (max-width: 767px) {
+  .main-bg {
+    display: block;
+  }
+
+  .main-container {
+    padding: 20px 10px;
+  }
+
+  .main-cards-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0.5rem;
+  }
+
+  .logo-toggle {
+  }
+
+  .content-main-text {
+    margin-bottom: 20px;
+  }
+
+  .filter-btns {
+    flex-direction: column;
+  }
+
+  .filter-button {
+    margin: 0.2rem 0.5rem;
+  }
 }
