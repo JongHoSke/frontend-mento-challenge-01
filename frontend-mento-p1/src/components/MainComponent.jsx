@@ -61,13 +61,14 @@ const MainComponent = () => {
               </button>
             </div>
             <div className="filter-btns">
-              <span className="content-main-text">Extensions List</span>
-              <div>
+              <h1 className="content-main-text">Extensions List</h1>
+              <div role="group" area-label="Filter Buttons">
                 <button
                   className={`btn-all filter-button ${
                     activeBtn === "all" ? "active" : ""
                   }`}
                   onClick={() => handleFilterClick("all")}
+                  aria-pressed={activeBtn === "all"}
                 >
                   All
                 </button>
@@ -76,6 +77,7 @@ const MainComponent = () => {
                     activeBtn === "active" ? "active" : ""
                   }`}
                   onClick={() => handleFilterClick("active")}
+                  aria-pressed={activeBtn === "active"}
                 >
                   Active
                 </button>
@@ -84,6 +86,7 @@ const MainComponent = () => {
                     activeBtn === "inactive" ? "active" : ""
                   }`}
                   onClick={() => handleFilterClick("inactive")}
+                  aria-pressed={activeBtn === "inactive"}
                 >
                   Inactive
                 </button>
@@ -93,11 +96,11 @@ const MainComponent = () => {
 
           <div className="main-cards-container">
             {filteredCards.length === 0 ? (
-              <div className="empty-state">
-                <p>
-                  {activeBtn === "all" ? "" : activeBtn === "active" ? "" : ""}
-                </p>
-              </div>
+              <div
+                className="empty-state"
+                role="status"
+                aria-live="polite"
+              ></div>
             ) : (
               filteredCards.map((info) => (
                 <CardComponent

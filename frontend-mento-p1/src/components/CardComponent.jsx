@@ -16,7 +16,11 @@ const CardComponent = ({ info, handleCardActive, handelCardRemove }) => {
         </div>
       </div>
       <div className="card-btns">
-        <button className="remove" onClick={() => handelCardRemove(info.id)}>
+        <button
+          className="remove"
+          onClick={() => handelCardRemove(info.id)}
+          aria-label={`${info.name} 확장 제거`}
+        >
           Remove
         </button>
         <div className="toggle-container">
@@ -26,6 +30,7 @@ const CardComponent = ({ info, handleCardActive, handelCardRemove }) => {
               checked={isToggle}
               onChange={handleOnChange}
               className="toggle-input"
+              aria-label={`${info.name} 활성화`}
             />
             <span className="toggle-slider"></span>
           </label>
