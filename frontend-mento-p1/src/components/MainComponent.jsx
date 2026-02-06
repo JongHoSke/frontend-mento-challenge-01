@@ -30,12 +30,11 @@ const MainComponent = () => {
   };
 
   const handleCardActive = (id) => {
-    const findCard = cards.find((card) => card.id === id);
-    findCard.isActive = !findCard.isActive;
-    const filterCards = cards.filter((card) => card.id != findCard.id);
-    filterCards.push(findCard);
-    filterCards.sort((a, b) => a.id - b.id);
-    setCards(filterCards);
+    const updatedCards = cards.map((card) =>
+      card.id === id ? { ...card, isActive: !card.isActive } : card,
+    );
+    updatedCards.sort((a, b) => a.id - b.id);
+    setCards(updatedCards);
   };
 
   const handelCardRemove = (id) => {
@@ -62,7 +61,7 @@ const MainComponent = () => {
             </div>
             <div className="filter-btns">
               <h1 className="content-main-text">Extensions List</h1>
-              <div role="group" area-label="Filter Buttons">
+              <div role="group" aria-label="Filter Buttons">
                 <button
                   className={`btn-all filter-button ${
                     activeBtn === "all" ? "active" : ""
@@ -96,11 +95,9 @@ const MainComponent = () => {
 
           <div className="main-cards-container">
             {filteredCards.length === 0 ? (
-              <div
-                className="empty-state"
-                role="status"
-                aria-live="polite"
-              ></div>
+              <div className="empty-state" role="status" aria-live="polite">
+                No extensions found
+              </div>
             ) : (
               filteredCards.map((info) => (
                 <CardComponent

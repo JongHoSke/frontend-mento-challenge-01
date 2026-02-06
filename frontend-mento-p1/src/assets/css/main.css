@@ -140,7 +140,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--clr-neutral-400);
+  color: var(--clr-neutral-300);
 }
 
 /* 라이트 모드 */
