@@ -29,4 +29,6 @@ Frontend Mentor의 **Extensions List UI 챌린지**를 React와 JavaScript로 �
 
 ---
 
-정적 배포 링크 : 
+정적 배포 링크 : https://jonghoske.github.io/extensionsUI-static/
+
+<img width="958" height="584" alt="image" src="https://github.com/user-attachments/assets/d2357c5a-0bb5-4831-836a-ce27439fc9d9" />
